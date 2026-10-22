@@ -18,9 +18,9 @@ A simple 2D mini golf game with 3 levels :D
 
 ## Run locally
 
-1. Clone this repository.
-2. Open `index.html` in your browser.
-3. Play MOLF!
+1. Clone this repo :^
+2. Open `index.html` in your browser <:
+3. Play MOLF! :D
 
 ## AI disclosure
 
