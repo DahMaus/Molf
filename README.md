@@ -1,6 +1,8 @@
 # MOLF
 
 A simple 2D mini golf game with 3 levels :D
+
+Drag and let go to fling the Ball!
 ## Showcase
 
 ![MOLF gameplay](./v0.1Molf.png)
