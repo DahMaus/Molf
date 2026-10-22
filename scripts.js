@@ -11,7 +11,7 @@ let sand = [];
 let platforms = [];
 let fans = [];
 let goal = { x: 0, y: 0, r: 25 };
-let CurrentLevel = 2;
+let CurrentLevel = 0;
 let Finished = false;
 
 const Levels = [
