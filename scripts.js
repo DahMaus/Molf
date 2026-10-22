@@ -11,7 +11,7 @@ let sand = [];
 let platforms = [];
 let fans = [];
 let goal = { x: 0, y: 0, r: 25 };
-let CurrentLevel = 0;
+let CurrentLevel = 2;
 let Finished = false;
 
 const Levels = [
@@ -19,9 +19,9 @@ const Levels = [
         start: [50, 92],
         goal: { x: 50, y: 8 },
         walls: [
-            { x: 0,  y: 75, w: 70, h: 2 },
-            { x: 30, y: 55, w: 70, h: 2 },
-            { x: 0,  y: 35, w: 70, h: 2 },
+            { x: 0,  y: 70, w: 67.5, h: 5 },
+            { x: 32.5, y: 50, w: 67.5, h: 5 },
+            { x: 0,  y: 30, w: 67.5, h: 5 },
         ],
         sand: [],
         platforms: [],
@@ -31,18 +31,17 @@ const Levels = [
         start: [50, 92],
         goal: { x: 85, y: 8 },
         walls: [
-            { x: 0,  y: 80, w: 40, h: 2 },
-            { x: 60, y: 80, w: 40, h: 2 },
-            { x: 0,  y: 48, w: 30, h: 2 },
-            { x: 70, y: 48, w: 30, h: 2 },
-            { x: 20, y: 30, w: 80, h: 2 },
+            { x: 0,  y: 80, w: 41.25, h: 5 },
+            { x: 58.75, y: 80, w: 80, h: 5 },
+            { x: 0,  y: 45, w: 85, h: 5 },
+            { x: 15, y: 30, w: 85, h: 5 },
         ],
         sand: [
-            { x: 0,  y: 62, w: 100, h: 12 },
-            { x: 55, y: 2,  w: 45,  h: 14 },
+            { x: 0,  y: 50, w: 100, h: 15 },
+            { x: 58.5, y: 0,  w: 45,  h: 15 },
         ],
         platforms: [
-            { x: 30, y: 48, w: 20, h: 2, axis: "x", range: 20, speed: 2 },
+            { x: 75, y: 45, w: 20, h: 5, axis: "x", range: 20, speed: 5 },
         ],
         fans: [],
     },
@@ -50,20 +49,21 @@ const Levels = [
         start: [15, 92],
         goal: { x: 85, y: 6 },
         walls: [
-            { x: 0,  y: 78, w: 65, h: 2 },
-            { x: 35, y: 60, w: 65, h: 2 },
-            { x: 0,  y: 35, w: 35, h: 2 },
-            { x: 65, y: 35, w: 35, h: 2 },
+            { x: 0,  y: 75, w: 67.5, h: 5 },
+            { x: 32.5, y: 60, w: 67.5, h: 5 },
+            { x: 0,  y: 35, w: 35, h: 5 },
+            { x: 65, y: 35, w: 35, h: 5 },
         ],
         sand: [
-            { x: 40, y: 84, w: 25, h: 10 },
+            { x: 41, y: 80, w: 70, h: 20 },
         ],
         platforms: [
             { x: 48, y: 30, w: 4, h: 12, axis: "y", range: 10, speed: 1.5 },
         ],
         fans: [
-            { x: 0,  y: 62, w: 35, h: 16, fx: 0,    fy: -0.2 },
-            { x: 50, y: 10, w: 50, h: 20, fx: 0.25, fy: 0 },
+            { x: 0,  y: 60, w: 32.5, h: 15, fx: 1,    fy: 0 },
+            { x: 67.5,  y: 65, w: 32.5, h: 15, fx: 0,    fy: 1 },
+            { x: 50, y: 0, w: 50, h: 20, fx: -1, fy: 0 },
         ],
     },
 ];
