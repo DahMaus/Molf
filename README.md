@@ -7,7 +7,7 @@ A simple 2D mini golf game with 3 levels :D
 
 ## Try it out
 
-[**Play MOLF**](#https://dahmaus.github.io/Molf/)
+[**Play MOLF**](https://dahmaus.github.io/Molf/)
 
 ## Features
 
