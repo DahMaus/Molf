@@ -3,7 +3,7 @@
 A simple 2D mini golf game with 3 levels :D
 ## Showcase
 
-![MOLF gameplay](./molf.png)
+![MOLF gameplay](./v0.1Molf.png)
 
 ## Try it out
 
