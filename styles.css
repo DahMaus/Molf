@@ -6,6 +6,7 @@ html, body {
 }
 
 body {
+    
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
@@ -17,7 +18,10 @@ body {
     height: 90vh;
     aspect-ratio: 9 / 16;
     margin: auto;
-    background-color: rgb(36, 182, 109);
+
+    background: 
+    repeating-conic-gradient(#24b66d 0 25%, #18a05c 0 50%) 
+      50% / 17.5% 10%
 }
 
 #game {

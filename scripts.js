@@ -44,9 +44,25 @@ window.addEventListener("mouseup", function (e) {
 function golf(start, end){
     const dx = start[0] - end[0];
     const dy = start[1] - end[1];
+    const power = Math.hypot(dx, dy);
+    if (power < 20) return;
 
-    GolfPos[0] += dx;
-    GolfPos[1] += dy;
+    let vx = dx * 0.08;
+    let vy = dy * 0.08;
 
-    DrawGolfBall();
+    function step(){
+        GolfPos[0] += vx;
+        GolfPos[1] += vy;
+
+        if (GolfPos[0] < 15) { GolfPos[0] = 15; vx *= -1; }
+        if (GolfPos[0] > canvas.width - 15) { GolfPos[0] = canvas.width - 15; vx *= -1; }
+        if (GolfPos[1] < 15) { GolfPos[1] = 15; vy *= -1; }
+        if (GolfPos[1] > canvas.height - 15) { GolfPos[1] = canvas.height - 15; vy *= -1; }
+
+        vx *= 0.95;
+        vy *= 0.95;
+        DrawGolfBall();
+        if (Math.hypot(vx, vy) > 0.1) requestAnimationFrame(step);
+    }
+    step();
 }
