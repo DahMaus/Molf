@@ -1,0 +1,28 @@
+html, body {
+    height: 100%;
+    margin: 0;
+
+    overflow: hidden;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.title {
+    text-align: center;
+}
+
+.game {
+    height: 90vh;
+    aspect-ratio: 9 / 16;
+    margin: auto;
+    background-color: rgb(36, 182, 109);
+}
+
+#game {
+    display: block;
+    width: 100%;
+    aspect-ratio: 9 / 16;
+    height: auto;
+}
