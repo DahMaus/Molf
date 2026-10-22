@@ -6,12 +6,22 @@ html, body {
 }
 
 body {
-    
+    background: repeating-conic-gradient(#ffffff 0 25%, #98bfec 0 50%)
+        50% / 100px 100px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .title {
     text-align: center;
+    border: groove;
+    border-color: #000000;
+    background-color: #ffffff;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0px 30px;
+
+    font-size: x-large;
 }
 
 .game {

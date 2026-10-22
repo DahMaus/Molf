@@ -22,7 +22,6 @@ const Levels = [
             { x: 0,  y: 75, w: 70, h: 2 },
             { x: 30, y: 55, w: 70, h: 2 },
             { x: 0,  y: 35, w: 70, h: 2 },
-            { x: 35, y: 20, w: 30, h: 2 },
         ],
         sand: [],
         platforms: [],
@@ -86,6 +85,20 @@ function LoadLevel(i){
     };
 }
 
+function DrawAimLine() {
+    if (!dragStart || IsMoving() || Finished) return;
+
+    const dx = dragStart[0] - dragEndPos[0];
+    const dy = dragStart[1] - dragEndPos[1];
+
+    ctx.beginPath();
+    ctx.moveTo(GolfPos[0], GolfPos[1]);
+    ctx.lineTo(GolfPos[0] + dx, GolfPos[1] + dy);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 3;
+    ctx.stroke();
+}
+
 function ToPixels(o){
     return {
         x: o.x / 100 * canvas.width,
@@ -132,23 +145,32 @@ function DrawGolfBall(time){
 
     ctx.stroke();
 
+    DrawAimLine();
+
     ctx.fillStyle = "black";
     ctx.font = "bold 28px sans-serif";
-    ctx.fillText("Level " + (CurrentLevel + 1) + " / " + Levels.length, 15, 35);
 
     if (Finished) {
         ctx.fillStyle = "rgba(0, 0, 0, 0.6)";
         ctx.fillRect(0, 0, canvas.width, canvas.height);
         ctx.fillStyle = "white";
-        ctx.font = "bold 48px sans-serif";
+        ctx.font = "bold 40px sans-serif";
         ctx.textAlign = "center";
-        ctx.fillText("Thanks for playing!", canvas.width / 2, canvas.height / 2);
+        ctx.fillText("Thanks for playing :D", canvas.width / 2, canvas.height / 2);
         ctx.textAlign = "left";
     }
 }
 
 function DrawSand(){
-    ctx.fillStyle = "khaki";
+    const T = Math.round(canvas.width * 0.09); 
+    const sandTile = document.createElement("canvas");
+    sandTile.width = sandTile.height = T * 2;
+    const sctx = sandTile.getContext("2d");
+    sctx.fillStyle = "#f6d7b0"; sctx.fillRect(0, 0, T * 2, T * 2);
+    sctx.fillStyle = "#e7c496"; sctx.fillRect(0, 0, T, T); sctx.fillRect(T, T, T, T);
+    const sandPattern = ctx.createPattern(sandTile, "repeat");
+
+    ctx.fillStyle = sandPattern;
     for (const s of sand) {
         const r = ToPixels(s);
         ctx.fillRect(r.x, r.y, r.w, r.h);
@@ -196,6 +218,7 @@ function DrawGoal(){
 }
 
 let dragStart = null;
+let dragEndPos = [0, 0];
 
 function GetPos(e) {
     const scale = canvas.width / canvas.clientWidth;
@@ -204,6 +227,11 @@ function GetPos(e) {
 
 canvas.addEventListener("mousedown", function (e) {
     dragStart = GetPos(e);
+    dragEndPos = dragStart;
+});
+
+canvas.addEventListener("mousemove", function (e) {
+    if (dragStart) dragEndPos = GetPos(e);
 });
 
 window.addEventListener("mouseup", function (e) {
@@ -279,7 +307,7 @@ function Update(time){
 }
 
 function DrawWalls(time){
-    ctx.fillStyle = "#895129";
+    ctx.fillStyle = "#a8683a";
     for (const r of GetSolids(time)) {
         ctx.fillRect(r.x, r.y, r.w, r.h);
     }
@@ -325,3 +353,13 @@ function Loop(time){
 
 LoadLevel(CurrentLevel);
 requestAnimationFrame(Loop);
+
+const bgm = new Audio("./bgm.mp3");
+bgm.loop = true;
+bgm.volume = 0.5;
+
+bgm.play().catch(() => {
+    document.addEventListener("click", () => {
+        bgm.play().catch(console.error);
+    }, { once: true });
+});
